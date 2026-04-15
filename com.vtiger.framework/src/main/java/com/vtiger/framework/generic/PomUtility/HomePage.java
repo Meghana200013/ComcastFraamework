@@ -20,6 +20,10 @@ public class HomePage {
 	@FindBy(linkText="Contacts")
 	private WebElement contaclink;
 	
+	@FindBy(linkText="Product")
+	private WebElement productlink;
+	
+	
 	@FindBy(xpath="//a[@href='index.php?module=Products&action=index']")
 	private WebElement productLink;
 	
