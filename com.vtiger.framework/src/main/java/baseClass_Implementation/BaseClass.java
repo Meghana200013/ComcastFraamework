@@ -40,6 +40,10 @@ public class BaseClass {
 	public void configBC(String browser) throws Throwable {
 		//String BROWSER=browser;
 		String BROWSER = fileUt.getDataFromPropertiesFile("browser");
+		
+		//Read data from CMD line
+		
+		//String BROWSER=System.getProperty("browser", fileUt.getDataFromPropertiesFile("browser"));
 
 		if (BROWSER.equals("chrome")) {
 			driver = new ChromeDriver();
@@ -57,9 +61,15 @@ public class BaseClass {
 	@BeforeMethod(alwaysRun = true)
 	public void configBM() throws Throwable {
 		String URL = fileUt.getDataFromPropertiesFile("url");
+		//String URL=System.getProperty("url", fileUt.getDataFromPropertiesFile("url"));
 		driver.get(URL);
 		WebUt.waitForPageLoad(driver);
 		driver.manage().window().maximize();
+		
+		/*----------Reading data from CMD Line-----------//
+		String USERNAME = System.getProperty("userName", fileUt.getDataFromPropertiesFile("username"));
+		String PASSWORD =System.getProperty("password", fileUt.getDataFromPropertiesFile("password"));*/
+		
 		String USERNAME = fileUt.getDataFromPropertiesFile("username");
 		String PASSWORD = fileUt.getDataFromPropertiesFile("password");
 		LoginPage lPage = new LoginPage(driver);
